@@ -75,6 +75,16 @@ For example, the following additional route could be used on a viewset to provid
 
 There are a couple of reasons that you might choose to take this approach, including that `OPTIONS` responses [are not cacheable][no-options].
 
+## Accessing metadata inside a request
+
+You might want to access metadata for a serializer inside a non-`OPTIONS` request. To do that, you could do something like this:
+
+    import metadata
+    ...
+    foo_meta = metadata.SimpleMetadata().get_serializer_info(FooSerializer())
+
+This will return data similar to that returned in an `OPTIONS` request.
+
 ---
 
 # Custom metadata classes
